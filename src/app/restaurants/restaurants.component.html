@@ -1,0 +1,87 @@
+
+<html>
+<style>
+/* .form-field-no-caption {
+    margin-left: 150px;
+    padding-left: 0.5em;
+} */
+table {
+    border:1px solid black;
+}
+
+th ,td {
+    width: 150px;
+    white-space: nowrap;
+    border:1px solid black;
+    padding: 2px;
+    margin: 4px;
+}
+label {
+    float: left;
+    width: 150px;
+    text-align: right;
+    margin-right: 0.5em;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+</style>
+<body>
+
+<p style="text-align: center;color: #4c04d1;"><b>restaurants works!</b></p>
+<br>
+<div class="form-body">
+  <h2 style="text-align: center;"><b>new restaurant</b></h2>
+
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>Name:</label>
+        <input type="text" formControlName="name" autocomplete="off" />
+      </div>
+      <div>
+        <label>Description: </label>
+        <input type="text" formControlName="description" autocomplete="off" />
+      </div>
+      <div>
+        <label>City: </label>
+        <input type="text" formControlName="city" autocomplete="off" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <br/>
+  
+  <div >
+    <h2 style="text-align: center;"><b><u>List of restaurants</u></b></h2>
+    <table>
+        <tr>
+            <th>City</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </table>
+  </div>
+  
+  <div *ngFor="let restaurant of restaurants">
+        <table>
+            <tr>
+                <td><div>{{ restaurant?.city }}</div></td>
+                <td><div>{{ restaurant?.name }}</div></td>
+                <td><div>{{ restaurant?.description }}</div></td>
+            </tr>
+        </table>
+
+    <!-- <div>{{ restaurant?.city }}</div>
+    <div>{{ restaurant?.name }}</div>
+    <div>{{ restaurant?.description }}</div> -->
+  </div>
+
+</body>
+</html>
